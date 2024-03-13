@@ -11,7 +11,7 @@ const Login = () => {
       </Link>
       <div className=" flex h-full justify-center items-center">
         <div className="md:w-1/2 flex flex-col gap-5 border-2 border-white p-10 rounded-lg  bg-white bg-opacity-10 backdrop-blur-sm">
-          <h1 className="text-3xl text-center font-semibold">Login</h1>
+          <h1 className="text-3xl text-center font-semibold text-amber-300">Login</h1>
           <input
             type="email"
             placeholder="Enter your email"
@@ -22,14 +22,14 @@ const Login = () => {
             placeholder="Enter your password"
             className="border-2 border-black rounded-lg p-2"
           />
-          <button className="bg-blue-600 text-white  font-bold hover:bg-white hover:text-blue-700 hover:border-blue-700  hover:border-2 rounded-lg p-2">
+          <button className="bg-amber-300 text-black  font-bold hover:bg-white hover:text-amber-700 hover:border-amber-700  hover:border-2 rounded-lg p-2">
             Login
           </button>
           <div className="text-center border-t-2 border-black">
             <span>Don't have an account yet? </span>
             <Link to={"/signup"}>
               {" "}
-              <button className="text-xl font-semibold">Create Account</button>
+              <button className="text-amber-300 text-lg p-2  font-semibold">Create Account</button>
             </Link>
           </div>
         </div>

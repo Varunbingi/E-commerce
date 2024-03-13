@@ -5,18 +5,23 @@ import Cart from "./components/Cart";
 import Body from "./components/Body";
 import Favourite from "./components/Favourite";
 import Header from "./components/Header";
-import Contact from "./components/Contact";
 import Error from "./components/Error";
 import ItemCard from "./components/ItemCard";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
+import Categories from "./components/Categories";
+import CategoryCard from "./components/CategoryCard";
+import { Provider } from "react-redux";
+import appStore from "./utils/appStore";
 
 const App = () => {
   return (
-    <div className=" bg-gradient-to-br from-zinc-200 to-gray-600 min-h-screen max-h-full">
+    <Provider store={appStore}>
+    <div className=" bg-gradient-to-br from-zinc-200 to-gray-600 min-h-screen max-h-full max-w-screen-2xl  ">
       <Header />
       <Outlet />
     </div>
+    </Provider>
   );
 };
 
@@ -38,8 +43,14 @@ const appRouter = createBrowserRouter([
         element: <Cart />,
       },
       {
-        path: "/contact",
-        element: <Contact />,
+        path: "/categories",
+        element: <Categories />,
+        
+      },
+      {
+        path:'/category/:id',
+        element:<CategoryCard/>,
+      
       },
       {
         path: "/:id",

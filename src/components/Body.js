@@ -3,6 +3,8 @@ import Shimmer from "./Shimmer";
 import ItemsCards from "./ItemsCards";
 import { Link } from "react-router-dom";
 import DEFAULT_URL from "../utils/Url";
+import { FaSearch } from "react-icons/fa";
+
 
 const Body = () => {
   const [cards, setCards] = useState([]);
@@ -12,21 +14,22 @@ const Body = () => {
   const [skip, setSkip] = useState(0);
   useEffect(() => {
     fetchData();
+    window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
   }, [changedUrl]);
   const fetchData = async () => {
     const data = await fetch(changedUrl);
     const json = await data.json();
-
+  
     setCards(json?.products);
     setFilterCard(json?.products);
   };
   return cards.length === 0 ? (
     <Shimmer />
   ) : (
-    <div className="p-10">
-      <div className="flex gap-2 justify-center">
+    <div className="   ">
+      <div className="flex gap-2 justify-center pt-10">
         <input
-          className="border-2 border-black w-[50%] rounded-md px-2"
+          className="border-2 border-black w-1/2 rounded-md px-2"
           value={searchItem}
           onChange={(e) => {
             setSearchItem(e.target.value);
@@ -44,24 +47,25 @@ const Body = () => {
             setFilterCard(searchList);
           }}
         >
-          Search
+         <span className="hidden md:block">Search </span> 
+          <span className="md:hidden font-semibold"><FaSearch /></span>
         </button>
       </div>
-      <div className="flex flex-wrap justify-center gap-5 m-10 ">
+      <div className="flex flex-wrap justify-center gap-5 p-10 ">
         {filterCard.map((card) => (
           <Link to={"/" + card.id} key={card.id}>
             <ItemsCards data={card} key={card.id} />
           </Link>
         ))}
       </div>
-      <div className="flex justify-center gap-10">
+      <div className="flex justify-center gap-10 pb-10">
         <button
           className="bg-yellow-200 px-4 py-2 rounded-md"
           onClick={() => {
             if (skip > 0) {
               setSkip(skip - 20);
             }
-            console.log(skip);
+            
 
             setChangedUrl(
               `https://dummyjson.com/products?skip=${skip}&limit=20`
@@ -76,7 +80,7 @@ const Body = () => {
             if (skip < 80) {
               setSkip(skip + 20);
             }
-            console.log(skip);
+            
             setChangedUrl(
               `https://dummyjson.com/products?skip=${skip}&limit=20`
             );

@@ -22,7 +22,7 @@ const ImageSlider = ({ images }) => {
           <FaArrowCircleLeft className="w-10 h-10" />
         </span>
       </button>
-      <img src={images[currentImageIndex]} className="w-96 h-96" />
+      <img src={images[currentImageIndex]} className="md:w-96 md:h-96 w-64 h-64 rounded-md" alt="images" />
 
       <button onClick={nextImage}>
         <span>
