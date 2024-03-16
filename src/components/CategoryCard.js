@@ -17,7 +17,7 @@ const CategoryCard=()=>{
   return( 
     <>
     <div className="p-5">
-      <Link to={"/categories"}>
+      <Link to={"/"}>
       <span>
           <FaArrowLeft />
         </span>

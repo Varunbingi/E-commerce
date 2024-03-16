@@ -32,8 +32,6 @@ const ItemCard = () => {
   return (
     <div className="bg-white min-h-screen">
     <div className="grid grid-cols-1 md:grid-cols-2 justify-center md:justify-around p-10   h-full">
-      
-
       <div className="flex flex-wrap  ">
         <ImageSlider images={image} />
       </div>
@@ -46,19 +44,17 @@ const ItemCard = () => {
         <h1>Available: {card?.stock}</h1>
         <h1>₹ {Math.floor(card.price-card.price *(card.discountPercentage/100))}</h1>
         <h1 className="line-through">₹ {card.price}</h1>
-        
-        
         </div>
         <div className="flex justify-between">
-          <button className="bg-rose-500 hover:font-semibold py-2 px-4 text-white rounded-xl" onClick={()=>handleClick(card)}>
+          <button className="bg-rose-500 hover:font-semibold md:py-2 md:px-4 p-2 text-white rounded-xl" onClick={()=>handleClick(card)}>
             Favourite
           </button>
     
-          <button className=" bg-gray-700 hover:font-semibold py-2 px-4 text-white rounded-xl"
+          <button className=" bg-gray-700 hover:font-semibold md:py-2 md:px-4 p-2  text-white rounded-xl"
           onClick={()=>handleClickCart(card)}>
             Add to Cart
           </button>
-          <button className="bg-black hover:font-semibold text-white rounded-xl py-2 px-4">Buy Now</button>
+          <button className="bg-black hover:font-semibold text-white rounded-xl md:py-2 md:px-4 p-2 ">Buy Now</button>
         </div>
       </div>
     </div>

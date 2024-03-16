@@ -18,13 +18,11 @@ const Categories = () => {
   }
   return (
     
-    <div className="p-5" >
-      <h1 className="text-2xl font-semibold">
-        Categories
-      </h1>
-      <ul className="p-5">
+    <div className=" w-full bg-gray-200 " >
+      
+      <ul className="flex flex-col md:flex-row md:flex-wrap text-black">
         {listCategories.map((list)=>(
-        <Link to={"/category/"+list}><li className="p-1">{list}</li></Link>))}
+        <Link to={"/category/"+list} key={list}><li className="py-2 px-4 border-t-2 border-black md:border-none" >{list} </li></Link>))}
       </ul>
      
     </div>

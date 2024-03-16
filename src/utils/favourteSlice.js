@@ -21,7 +21,7 @@ const favouriteSlice = createSlice({
     },
   },
 });
-export const { addItem, removeItem, clearCart } = favouriteSlice.actions;
+export const { addItem, removeItem, clearItem } = favouriteSlice.actions;
 
 
 export default favouriteSlice.reducer;

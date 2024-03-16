@@ -5,7 +5,7 @@ const useCategory = (id) => {
   const [card, setCard] = useState(null);
   useEffect(() => {
     fetchItem();
-  }, []);
+  }, [card]);
   const fetchItem = async () => {
     const data = await fetch(SINGLE_CATEGORY_URL + id);
 

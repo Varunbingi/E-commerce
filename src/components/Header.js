@@ -6,15 +6,21 @@ import { useSelector } from "react-redux";
 import { FaBars } from "react-icons/fa6";
 import { FaX } from "react-icons/fa6";
 import { useState } from "react";
+import Categories from "./Categories";
+import { FaAngleDown,FaAngleUp } from "react-icons/fa6";
+
 
 
 const Header = () => {
   const cartItems = useSelector((store) => store.cart.items);
   const [isMenuOpen, setIsMenuOpen] = useState(false); 
-
+  const [isCategoryOpen,setIsCategoryOpen]=useState(false);
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen); 
   };
+  const togglCategory=()=>{
+    setIsCategoryOpen(!isCategoryOpen);
+  }
   return (
     <div className="relative">
       <div className="grid grid-cols-[30%,70%] bg-gradient-to-b from-indigo-300 to-gray-600 justify-between items-center h-[100px]  text-white">
@@ -30,8 +36,14 @@ const Header = () => {
             <li className="cursor-pointer hover:scale-110">
               <Link to={"/"}>Home</Link>
             </li>
-            <li className="cursor-pointer hover:scale-110">
-              <Link to={"/categories"}>Categories</Link>
+            <li className="cursor-pointer  " onClick={togglCategory}>
+            <div className="flex items-center">
+                  <span className="px-2">Categories</span>
+                  <span className="pt-1">
+                 {isCategoryOpen?<FaAngleUp/>:<FaAngleDown />}
+                  </span>
+                </div>
+              
             </li>
             <li className="cursor-pointer hover:scale-110">
               <Link to={"/favourite"}>
@@ -65,14 +77,19 @@ const Header = () => {
       
       {isMenuOpen &&
         <div className="absolute top-[100px] left-0  w-full h-fit bg-gray-200 text-black z-50">
-          <div className="flex flex-col  p-4 boreder-b-2 border-black" onClick={()=>toggleMenu()}>
-            <Link to={"/"}>Home</Link>
-            <Link to={"/categories"}>Categories</Link>
-            <Link to={"/favourite"}>Favourites</Link>
-            <Link to={"/cart"}>Cart</Link>
-            <Link to={"/login"}>Login</Link>
+          <div className="flex flex-col  border-b-2 border-black" >
+            <Link to={"/"}  className="border-t-2 p-2 border-black" onClick={()=>toggleMenu()}>Home</Link>
+            <span className="border-t-2 p-2 border-black flex justify-between " onClick={togglCategory} > Categories <span className="p-1">{isCategoryOpen?<FaAngleUp/>:<FaAngleDown />}</span>
+            </span>{isCategoryOpen && <div className="flex w-full md:hidden  " ><Categories/></div> } 
+           <Link to={"/favourite"} className="border-t-2 p-2 border-black "onClick={()=>toggleMenu()}>Favourites</Link>
+            <Link to={"/cart"}  className="border-t-2 p-2 border-black " onClick={()=>toggleMenu()}>Cart</Link>
+            <Link to={"/login"} className="border-t-2 p-2 border-black "> Login</Link>
           </div>
         </div>
+      }
+     
+      {isCategoryOpen && 
+        <div className="hidden md:flex  " onClick={()=>togglCategory()}><Categories/></div>
       }
     </div>
   );
